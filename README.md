@@ -8,7 +8,13 @@ User {
 }
 
 Phone {
-  id
   phone_number
 }
+
+FindUserByPhone
+GetAllUsers
+CreateUser
+CreatePhoneForUser
+
+Phone - number is unique
 ```
