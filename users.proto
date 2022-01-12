@@ -1,0 +1,43 @@
+syntax="proto3";
+package proto;
+option go_package = "/proto";
+
+message User {
+	string id = 1;
+	string username = 2;
+	string email = 3;
+    repeated Phone phone_numbers = 4;
+}
+
+message Phone {
+    string phone_number = 1;
+}
+
+message UserRequest {}
+
+message UserResponse {
+    repeated User users = 1;
+}
+
+message CreateUserRequest {
+    string username = 1;
+    string email = 2;
+}
+
+message FindByPhoneRequest {
+    string phone_number = 1;
+}
+
+message CreatePhoneRequest {
+    string phone_number = 1;
+    string userId = 2;
+}
+
+
+
+service UserService{
+    rpc GetAllUsers(UserRequest) returns (UserResponse) {}
+    rpc CreateUser(CreateUserRequest) returns (User) {}
+    rpc FindUserByPhone(FindByPhoneRequest) returns (User) {}
+    rpc CreatePhoneForUser(CreatePhoneRequest) returns (User) {}
+}
